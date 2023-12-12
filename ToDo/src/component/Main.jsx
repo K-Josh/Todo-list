@@ -9,10 +9,14 @@ const Main = () => {
       <VStack gap={4}>
        <Search />
      <Box maxW={'lg'} className="max-w-[1640px]" >
-      <Box  position={'relative'} left={{base:'-4rem',lg:'4rem'}} mt={{base:'6rem',lg:'4rem'}} >
+      <Box  position={'relative'} gap={3} left={{base:'-4rem',lg:'4rem'}} mt={{base:'6rem',lg:'4rem'}} >
         <h1 className="font-bold lg:text-[2rem]">Hello!  Josh</h1>
         <Text w={{base:'18rem', md:'24rem'}}>Never put off till tommorow what can be done today!</Text>
-       {new Date().getFullYear()}
+       <Box mt={4}>
+        {new Date().toLocaleDateString() ? (
+          <h1 className="font-bold">Today</h1>
+        ) : ''}
+       </Box>
        <div>
         <Cards />
        </div>
