@@ -5,7 +5,7 @@ import { IoMdSettings } from "react-icons/io";
 const Search = () => {
   return (
     <Flex position={'relative'}>
-    <Flex ml={{base:'7rem',md:'16rem',lg:'35rem'}} className={`relative top-[-3rem] lg:top-0 transition-all duration-500 ease-out `} gap={'2rem'} top={{base:'-26rem',sm:'-60rem',md:'-20rem',lg:'3rem'}} left={{lg:'14rem'}}>
+    <Flex ml={{base:'7rem',md:'16rem',lg:'35rem'}} className={`relative top-[-3rem] lg:top-0 transition-all duration-500 ease-out `} gap={'2rem'} top={{base:'-3rem',sm:'2rem',md:'-20rem',lg:'3rem'}} left={{base:'-3rem', lg:'14rem'}}>
  <Box className="flex md:space-x-[6rem]" >
    <Box className={`inline-flex items-center`}>
     <Input placeholder='search' rounded={'2xl'} w={{base:'7rem',lg:'12rem'}} type="text" size='md' className=" p-2 md:w-[12rem] placeholder:p-1 h-[2rem] cursor-pointer bg-slate-200">
