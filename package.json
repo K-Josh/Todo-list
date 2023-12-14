@@ -1,0 +1,18 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "a todo list",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm start --prefix server",
+    "ToDo": "npm run dev --prefix client",
+    "dev": "npx vite ./ToDo/ & nodemon ./server/index.js &",
+    "start": "concurrently \"cd ToDo && npm run build\" \"cd server && npm run build\"",
+    "front-back" : ""
+  },
+  "author": "kirin",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
