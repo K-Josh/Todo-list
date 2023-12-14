@@ -4,7 +4,7 @@ import { FaUserEdit, FaMapMarkerAlt } from 'react-icons/fa'
 export const SidebarData = [
     {
         icon: FaHouse,
-        heading: 'Workbench'
+        heading: 'Overview'
     },
     {
         icon: FaFilter,
@@ -12,7 +12,7 @@ export const SidebarData = [
     },
     {
         icon: FaUserEdit,
-        heading: 'Management'
+        heading: 'Lists'
     },
     {
         icon: FaUnlock,

@@ -41,11 +41,11 @@ const Tasks = () => {
 
   return (
     <Box minH={'90vh'} mt={3} >
-      <Flex gap={4} alignItems={'center'} direction={'column'} maxW={'lg'}>
-      <h1 className="font-semibold">Whatsup for today pal</h1>
+      <Flex gap={4} alignItems={'center'} direction={'column'}>
+      <h1 className="font-semibold">Whatsup for today pal 🔥</h1>
       <form>
        <Flex gap={3} alignItems={'center'}>
-       <Input type="text" w={{lg:'16rem'}} value={task} onChange={(e) =>setTask(e.target.value)} className="cursor-pointer" />
+        <Input type="text" w={{lg:'16rem'}} value={task} onChange={(e) =>setTask(e.target.value)} className="cursor-pointer" />
         <Button w={{base:'4rem',lg:'3rem'}} h={'2rem'} fontSize={'12px'} bg={"blue.600"} _hover={''} color={'white'} className="hover:opacity-70" onClick={handleSubmit}>Add list</Button>
        </Flex>
       </form>
@@ -54,7 +54,7 @@ const Tasks = () => {
           todos.length === 0 
           ? 
           <div>
-            <p className="text-[12px] font-bold">Are you free today</p>
+            <p className="text-[12px] font-bold">Are you free today? if not get it DONE 🧘🏽‍♀️</p>
           </div>
           :
           todos.map((todo, index) => (

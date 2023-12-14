@@ -1,4 +1,4 @@
-import { Box, Text, VStack, } from "@chakra-ui/react"
+import { Box, Flex, Text, VStack, } from "@chakra-ui/react"
 import Search from "./Search";
 import { Cards } from "./Cards";
 import Tasks from "./Tasks";
@@ -6,23 +6,21 @@ import Tasks from "./Tasks";
 
 const Main = () => {
   return (
-      <VStack gap={4}>
+      <VStack gap={4} maxW={{base:'100vw',lg:'lg'}}>
        <Search />
-     <Box maxW={'lg'} className="max-w-[1640px]" >
-      <Box  position={'relative'} gap={3} left={{base:'-4rem',lg:'4rem'}} mt={{base:'6rem',lg:'4rem'}} >
+     <Box className="" >
+      <Box  position={'relative'} gap={3}  mt={{base:'6rem',lg:'4rem'}} >
         <h1 className="font-bold lg:text-[2rem]">Hello!  Josh</h1>
         <Text w={{base:'18rem', md:'24rem'}}>Never put off till tommorow what can be done today!</Text>
        <Box mt={4}>
         {new Date().toLocaleDateString() ? (
           <h1 className="font-bold">Today</h1>
-        ) : ''}
+        ) : 'Yesterday'}
        </Box>
-       <div>
-        <Cards />
-       </div>
-       <div>
+       <Flex direction={{base:'column',lg:'row'}} gap={{lg:'12rem'}} justifyContent={'center'}  mt={{md:'3rem'}}>
+        <Cards />     
          <Tasks />    
-        </div>
+       </Flex>
       </Box>
     </Box>
   </VStack>

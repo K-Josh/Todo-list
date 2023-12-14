@@ -33,13 +33,13 @@ const Sidebar = () => {
         <motion.div
         variants={sidebarVariants}
         animate={window.innerWidth<=768?`${isopen}`:`${!isopen}`}
-        className={`flex relative flex-col  transition-all duration-500 ease-in-out bg-blue-600 rounded-xl h-screen p-4 lg:p-3 lg:fixed z-[9] ${isopen ? 'z-10 w-full ml-[6rem] lg:ml-[-3rem] lg:w-[20rem]' : ' lg:left-[-5rem] lg:ml-[-3rem] ml-[-6rem] opacity-0'} `}
+        className={`flex relative flex-col  transition-all duration-500 ease-in-out bg-blue-600 rounded-xl h-screen p-4 lg:p-3 lg:fixed z-[9] ${isopen ? 'z-20 w-full ml-[6rem] lg:ml-[-3rem] lg:w-[20rem]' : ' lg:left-[-5rem] lg:ml-[-3rem] ml-[-6rem] opacity-0'} `}
         >
-          <div className='flex flex-col gap-[2rem] '>
+          <div className='flex flex-col gap-[2rem]'>
             {SidebarData.map((item, index)=>{
                 return(
-                    <div className={`${selected === index ? 'flex gap-[2rem] items-center h-[2.5rem] ml-[1rem] relative transition-all duration-400 ease-in text-[14px] active' : 'flex gap-[1rem] items-center h-[3.5rem] ml-[2rem] relative transition-all duration-400 ease-in text-[14px]'} cursor-pointer lg:top-[5rem] top-[3rem] lg:left-[2rem] rounded-lg`} key={index} onClick={()=>setSelected(index)}>
-                        <item.icon className={`${!isopen ? 'relative lg:left-0' : 'lg:ml-[5rem]'} text-white text-[1rem] transition-all duration-300 ease-out `}/>
+                    <div className={`${selected === index ? 'flex gap-[2rem] items-center h-[2.5rem] ml-[1rem] relative transition-all duration-400 ease-in-out text-[14px] active' : 'flex gap-[1rem] items-center ml-[2rem] relative transition-all duration-400 ease-in text-[14px]'} cursor-pointer lg:top-[5rem] top-[3rem] lg:left-[2rem] left-[4rem] rounded-lg`} key={index} onClick={()=>setSelected(index)}>
+                        <item.icon className={`${!isopen ? 'relative lg:left-0' : 'lg:ml-[5rem]'} text-white text-1rem] transition-all duration-300 ease-out `}/>
                         <span className={`text-white ${selected === index ? 'lg:inline-flex ' : ' lg:inline-flex lg:opacity-100'} transition-all duration-300 ease-out text-[12px]`}>{item.heading}</span>
                     </div>
                 )

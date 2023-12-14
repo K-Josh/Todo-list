@@ -2,8 +2,7 @@ import { Box, RangeSlider,
     RangeSliderTrack,
     RangeSliderFilledTrack,
     RangeSliderThumb,
-    Flex, } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
+    Grid, } from '@chakra-ui/react'
 export const Cards = () => {
 
 const cards = [
@@ -27,7 +26,7 @@ const cards = [
             number: 180,
             steps: 'intention',
             range: '60%',
-            bg: 'white',
+            bg: 'whiteSmoke',
             progress : (<RangeSlider
             aria-label={['min', 'max']}
             colorScheme='green'
@@ -42,7 +41,7 @@ const cards = [
             number: 72,
             steps: 'Deal',
             range: '48%',
-            bg: <Box bg={'white'} shadow={'sm'}/>,
+            bg: 'whiteSmoke',
             progress : (<RangeSlider
             aria-label={['min', 'max']}
             colorScheme='blue'
@@ -60,32 +59,24 @@ const cards = [
             color: 'white'
         }
     ]
-const [activeIndex, setActiveIndex] = useState(null);
-useEffect(()=>{
-    const interval = setInterval(()=> {
-        setActiveIndex(prevIndex => (prevIndex + 1) % cards.length)
-    }, 4000)
 
-    return () => clearInterval(interval)
-}, [cards.length])
+
   return (
-        <Box W={{base:'100vw',md:'70vw'}} className=''>
-          <Flex className={`shadow-md ${activeIndex ? '' : 'opacity-100'}`} gap={2} direction={{base:'column', md:'row'}}>
+        <Box maxH={'90vh'} mt={{lg:'-26px'}}>
+          <Grid maxW={'lg'} templateColumns={{base:'repeat(2, 1fr)',lg:'repeat(2, 1fr)'}} className={`shadow-lg`} gap={3} >
           {cards.map((card, index) => (
-            activeIndex === index && (
-            <Box  className={` ${activeIndex === index ? ' transition-all duration-700 ease-in-out' : 'opacity-50' }`} key={index} bg={`${card.bg}`} rounded={'md'} p={{base:'1.5rem',lg:'1rem'}} minW={{lg:'32rem'}} h={{base:"",md:'15rem'}}>
-          <Box gap={3} color={`${card.color}`} className={`space-y-3 flex flex-col `}>
+            (
+            <Box className={`cursor-pointer hover:scale-110 transition-all duration-700 ease-in-out space-y-3 flex flex-col `} key={index} bg={`${card.bg}`} rounded={'md'} p={{base:'1rem',lg:'1rem'}} minW={{base:'12rem',lg:'17rem'}} h={{base:"",md:'15rem'}} gap={3} color={`${card.color}`}> 
           <span className='lg:text-[2rem]'>{card.number}</span>
           <span>{card.steps}</span>
           <div className='lg:pt-10 lg:space-y-3'>
           <span>{card.range}</span>
           <span>{card.progress}</span>
           </div>
-          </Box>
         </Box>
             )
       ))}
-      </Flex>
+      </Grid>
         </Box>
 
   )
