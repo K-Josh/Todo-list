@@ -62,7 +62,7 @@ const cards = [
 
 
   return (
-        <Box maxH={'90vh'} mt={{lg:'-26px'}}>
+        <Box minH={'100vh'} mt={{lg:'-26px'}}>
           <Grid maxW={'lg'} templateColumns={{base:'repeat(2, 1fr)',lg:'repeat(2, 1fr)'}} className={`shadow-lg`} gap={3} >
           {cards.map((card, index) => (
             (

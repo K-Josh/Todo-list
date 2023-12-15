@@ -4,7 +4,7 @@ import { useState } from 'react'
 import {FaBarsStaggered} from 'react-icons/fa6'
 import { IoClose } from "react-icons/io5";
 import {motion} from 'framer-motion'
-import { Box, Stack, } from '@chakra-ui/react'
+import { Box, Image, Stack, } from '@chakra-ui/react'
 
 const Sidebar = () => {
     const [selected, setSelected] = useState(0)
@@ -20,7 +20,7 @@ const Sidebar = () => {
     }
   return (
     <>
-     <Stack minH={'100vh'} className='h-screen' direction={'column'}>
+     <Stack minH={'100vh'} direction={'column'}>
 
      {/* overlay */}
      {isopen ?  <div className='bg-black/80 fixed w-full h-screen z-10 top-0 left-0'></div> : ''}
@@ -33,7 +33,7 @@ const Sidebar = () => {
         <motion.div
         variants={sidebarVariants}
         animate={window.innerWidth<=768?`${isopen}`:`${!isopen}`}
-        className={`flex relative flex-col  transition-all duration-500 ease-in-out bg-blue-600 rounded-xl h-screen p-4 lg:p-3 lg:fixed z-[9] ${isopen ? 'z-20 w-full ml-[6rem] lg:ml-[-3rem] lg:w-[20rem]' : ' lg:left-[-5rem] lg:ml-[-3rem] ml-[-6rem] opacity-0'} `}
+        className={`flex relative flex-col  transition-all duration-500 ease-in-out bg-blue-600 rounded-xl p-4 lg:p-3 lg:fixed z-[9] h-screen ${isopen ? 'z-20 w-full ml-[6rem] lg:ml-[-3rem] lg:w-[20rem]' : 'lg:left-[-5rem] lg:ml-[-3rem] ml-[-6rem] opacity-0'} `}
         >
           <div className='flex flex-col gap-[2rem]'>
             {SidebarData.map((item, index)=>{
@@ -44,6 +44,16 @@ const Sidebar = () => {
                     </div>
                 )
             })}
+
+            <div>
+              <Image 
+                src='/task-list.png'
+                alt='image'
+                m={{base:'3rem',lg:'4rem'}}
+                mt={{base:'7rem',lg:'10rem'}}
+                className={` transition-all duration-700 ${isopen ? ' ml-[6rem] lg:ml-[-3rem]' : 'lg:left-[-5rem] lg:ml-[-3rem] ml-[-6rem] opacity-0'}`}
+              />
+            </div>
             </div>
         
         </motion.div>

@@ -4,6 +4,7 @@ import { FaTrashAlt} from "react-icons/fa";
 import { MdCheckBox, MdEditNote } from "react-icons/md";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast';
 
 const Tasks = () => {
   const [task, setTask] = useState('')
@@ -12,25 +13,67 @@ const Tasks = () => {
   const handleEdit = (id) => {
     axios.put('http://localhost:4000/update/'+id)
     .then(result => {
-      location.reload(result)
-    })
+      toast('Task completed You Rock!', {
+        icon: '😀',
+        duration: '7000'
+      })
+      setTimeout(()=> {
+        location.reload(result)
+      }, 4000)
+  })
     .catch(err => console.log(err))
   }
   
   const handleDelete = (id) => {
     axios.delete('http://localhost:4000/delete/'+id)
     .then(() => {
-      location.reload()
+      toast.promise(
+        new Promise((resolve) => {
+          setTimeout(() => {
+            resolve('Task Deleted');
+          }, 5000);
+        }),
+        {
+          pending: 'Deleting...',
+          success: <b>Task Deleted</b>,
+        }
+      );
+        setTimeout(()=> {
+          location.reload()
+        }, 7000)
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err);
+      toast.promise(
+        new Promise((resolve) => {
+          setTimeout(() => {
+            resolve('Task Deleted');
+          }, 5000);
+        }),
+        {
+          pending: 'Deleting...',
+          error: <b>Task could not be Deleted</b>,
+        }
+      );
+    })
   }
 
   const handleSubmit = () => {
     axios.post('http://localhost:4000/', {task:task})
     .then(result => {
-      location.reload(result)    
+      toast.success('Your Tasks Rock🔥', {
+        duration: '9000'
+      })    
+      setTimeout(()=> {
+        location.reload(result)
+      }, 7000)
     })
-    .catch(err => console.log(err))
+    .catch(err => { 
+      toast.error('Task failed to add🙁', {
+        duration: '7000'
+      })
+      console.log(err);
+  })
   }
 
   useEffect(() => {
@@ -40,18 +83,17 @@ const Tasks = () => {
   }, [])
 
   return (
-    <Box minH={'90vh'} mt={3} >
+    <Box mt={{base:'-9rem',lg:3}} >
       <Flex gap={4} alignItems={'center'} direction={'column'}>
       <h1 className="font-semibold">Whatsup for today pal 🔥</h1>
       <form>
        <Flex gap={3} alignItems={'center'}>
-        <Input type="text" w={{lg:'16rem'}} value={task} onChange={(e) =>setTask(e.target.value)} className="cursor-pointer" />
-        <Button w={{base:'4rem',lg:'3rem'}} h={'2rem'} fontSize={'12px'} bg={"blue.600"} _hover={''} color={'white'} className="hover:opacity-70" onClick={handleSubmit}>Add list</Button>
+        <Input autoComplete="on" type="text" w={{lg:'16rem'}} value={task} onChange={(e) =>setTask(e.target.value)} className="cursor-pointer" />
+        <Button type="submit" w={{base:'4rem',lg:'3rem'}} h={'2rem'} fontSize={'12px'} bg={"blue.600"} _hover={''} color={'white'} className="hover:opacity-70" onClick={handleSubmit}>Add list</Button>
        </Flex>
       </form>
 
-        {
-          todos.length === 0 
+        {todos.length === 0 
           ? 
           <div>
             <p className="text-[12px] font-bold">Are you free today? if not get it DONE 🧘🏽‍♀️</p>
@@ -68,6 +110,10 @@ const Tasks = () => {
            }
           <Box  className="flex items-center  cursor-pointer ">
           <p className={`${todo.done ? 'line-through' : ''} whitespace-nowrap text-[0.8rem] font-semibold`}>{todo.task}</p>
+          <Toaster
+            position="top-center"
+             reverseOrder={true}
+              />
           </Box>
           </div>
          <Flex alignItems={'center'} gap={2}>
