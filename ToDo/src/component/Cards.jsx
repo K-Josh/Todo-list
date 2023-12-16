@@ -56,17 +56,17 @@ const cards = [
             number: 72,
             steps: 'No itention',
             bg: 'red.300',
-            color: 'white'
+            color: 'white',
         }
     ]
 
 
   return (
-        <Box minH={'100vh'} mt={{lg:'-26px'}}>
+        <Box ml={{lg:'15rem'}} minH={'90vh'} mt={{lg:'4px'}}>
           <Grid maxW={'lg'} templateColumns={{base:'repeat(2, 1fr)',lg:'repeat(2, 1fr)'}} className={`shadow-lg`} gap={3} >
           {cards.map((card, index) => (
             (
-            <Box className={`cursor-pointer hover:scale-110 transition-all duration-700 ease-in-out space-y-3 flex flex-col `} key={index} bg={`${card.bg}`} rounded={'md'} p={{base:'1rem',lg:'1rem'}} minW={{base:'12rem',lg:'17rem'}} h={{base:"",md:'15rem'}} gap={3} color={`${card.color}`}> 
+            <Box className={`cursor-pointer hover:scale-110 transition-all duration-700 ease-in-out space-y-3 flex flex-col `} key={index} bg={`${card.bg}`} rounded={'md'} p={{base:'1rem',lg:'1rem'}} w={{lg:'14rem'}} _hover={''} h={{base:"10rem",md:'15rem'}} gap={3} color={`${card.color}`}> 
           <span className='lg:text-[2rem]'>{card.number}</span>
           <span>{card.steps}</span>
           <div className='lg:pt-10 lg:space-y-3'>
